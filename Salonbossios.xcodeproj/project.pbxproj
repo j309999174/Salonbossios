@@ -14,6 +14,7 @@
 		05AC2B00200C9D29004AC249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05AC2AFF200C9D29004AC249 /* Assets.xcassets */; };
 		05AC2B03200C9D29004AC249 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AC2B01200C9D29004AC249 /* LaunchScreen.storyboard */; };
 		05AC2B0B200CA38A004AC249 /* salonbosslogo180.png in Resources */ = {isa = PBXBuildFile; fileRef = 05AC2B0A200CA38A004AC249 /* salonbosslogo180.png */; };
+		05B7E230206AAC5D009E7F3A /* welcomeimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 05B7E22F206AAC5D009E7F3A /* welcomeimg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		05AC2B02200C9D29004AC249 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05AC2B04200C9D29004AC249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05AC2B0A200CA38A004AC249 /* salonbosslogo180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = salonbosslogo180.png; sourceTree = "<group>"; };
+		05B7E22F206AAC5D009E7F3A /* welcomeimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeimg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		05AC2AF4200C9D29004AC249 /* Salonbossios */ = {
 			isa = PBXGroup;
 			children = (
+				05B7E22F206AAC5D009E7F3A /* welcomeimg.png */,
 				05AC2B0A200CA38A004AC249 /* salonbosslogo180.png */,
 				05AC2AF5200C9D29004AC249 /* AppDelegate.swift */,
 				05AC2AF7200C9D29004AC249 /* ViewController.swift */,
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05AC2B03200C9D29004AC249 /* LaunchScreen.storyboard in Resources */,
+				05B7E230206AAC5D009E7F3A /* welcomeimg.png in Resources */,
 				05AC2B0B200CA38A004AC249 /* salonbosslogo180.png in Resources */,
 				05AC2B00200C9D29004AC249 /* Assets.xcassets in Resources */,
 				05AC2AFB200C9D29004AC249 /* Main.storyboard in Resources */,
