@@ -28,6 +28,7 @@
 		05AC2B04200C9D29004AC249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05AC2B0A200CA38A004AC249 /* salonbosslogo180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = salonbosslogo180.png; sourceTree = "<group>"; };
 		05B7E22F206AAC5D009E7F3A /* welcomeimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeimg.png; sourceTree = "<group>"; };
+		05BE8C862094B02D00CC0E45 /* Salonbossios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Salonbossios.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		05AC2AF4200C9D29004AC249 /* Salonbossios */ = {
 			isa = PBXGroup;
 			children = (
+				05BE8C862094B02D00CC0E45 /* Salonbossios.entitlements */,
 				05B7E22F206AAC5D009E7F3A /* welcomeimg.png */,
 				05AC2B0A200CA38A004AC249 /* salonbosslogo180.png */,
 				05AC2AF5200C9D29004AC249 /* AppDelegate.swift */,
@@ -106,6 +108,14 @@
 					05AC2AF1200C9D29004AC249 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -286,11 +296,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Salonbossios/Salonbossios.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y683GGLLBM;
 				INFOPLIST_FILE = Salonbossios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jd.Salonbossios;
+				PRODUCT_BUNDLE_IDENTIFIER = oushelun.Salonbossios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -301,11 +312,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Salonbossios/Salonbossios.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y683GGLLBM;
 				INFOPLIST_FILE = Salonbossios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jd.Salonbossios;
+				PRODUCT_BUNDLE_IDENTIFIER = oushelun.Salonbossios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

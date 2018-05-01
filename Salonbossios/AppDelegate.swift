@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +18,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //徽章为0
+        application.applicationIconBadgeNumber = 0
+        //请求通知权限
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) {
+                (accepted, error) in
+                if !accepted {
+                    print("用户不允许消息通知。")
+                }
+        }
+        //向APNs请求token
+        UIApplication.shared.registerForRemoteNotifications()
+        
         return true
     }
-
+    //token请求回调
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        //打印出获取到的token字符串
+        UserDefaults.standard.set(deviceToken.hexString, forKey: "deviceToken")
+        print("Get Push token: \(deviceToken.hexString)")
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -32,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        //徽章为0
+        application.applicationIconBadgeNumber = 0
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -91,3 +114,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//对Data类型进行扩展
+extension Data {
+    //将Data转换为String
+    var hexString: String {
+        return withUnsafeBytes {(bytes: UnsafePointer<UInt8>) -> String in
+            let buffer = UnsafeBufferPointer(start: bytes, count: count)
+            return buffer.map {String(format: "%02hhx", $0)}.reduce("", { $0 + $1 })
+        }
+    }
+}

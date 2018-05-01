@@ -8,24 +8,16 @@
 
 import UIKit
 import WebKit
+import JavaScriptCore
 
 
 class ViewController: UIViewController, WKUIDelegate, WKScriptMessageHandler{
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        //js调用储存用户ID
-        if(message.name == "ioscosidsave"){
-            print("美容师ID\(message.body)")
-            
-            UserDefaults.standard.set(message.body, forKey: "cosid")
-            print("储存的美容师id\(String(describing: UserDefaults.standard.string(forKey: "cosid")!))")
-        }
-    }
     
     
 
     var webView: WKWebView!
     var myURL: URL!
-    var passresut: String!="http://47.96.173.116/salonboss/salonbosslogin/123"
+    var passresut: String!="https://www.oushelun.cn/salonboss/cusorder/123"
     
     override func loadView() {
         //创建配置
@@ -35,11 +27,14 @@ class ViewController: UIViewController, WKUIDelegate, WKScriptMessageHandler{
         webConfiguration.userContentController.addUserScript(userScript)
         //内容控制，负责js调用swift
         
-        webConfiguration.userContentController.add(self,name: "ioscosidsave")
+        webConfiguration.userContentController.add(self,name: "salonbosstoken")
         //webview加入配置
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.uiDelegate = self
         view = webView
+        
+        
+        
     }
     
     override func viewDidLoad() {
@@ -54,6 +49,33 @@ class ViewController: UIViewController, WKUIDelegate, WKScriptMessageHandler{
         //self.musicplay()
     }
 
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("调用1salonbosstoken")
+        //js调用储存用户ID
+        if(message.name == "salonbosstoken"){
+            print("调用salonbosstoken")
+            //储存deviceToken
+            let urlmessage:String!="https://www.oushelun.cn/decorateajax/salonbosstoken/123/\(UserDefaults.standard.string(forKey: "deviceToken")!)"
+            let toSearchword = CFURLCreateStringByAddingPercentEscapes(nil, urlmessage! as CFString, nil, "!*'();@&=+$,?%#[]" as CFString, CFStringBuiltInEncodings.UTF8.rawValue)
+            print(toSearchword!)
+            let request = URLRequest(url: URL(string: toSearchword! as String)!)
+            let configuration = URLSessionConfiguration.default
+            
+            let session = URLSession(configuration: configuration,
+                                     delegate: self as? URLSessionDelegate, delegateQueue:OperationQueue.main)
+            
+            let dataTask = session.dataTask(with: request,
+                                            completionHandler: {(data, response, error) -> Void in
+                                                if error != nil{}else{
+                                                    print("数据")
+                                                    print(data as Any)
+                                                }})
+            //使用resume方法启动任务
+            dataTask.resume()
+            print("完成salonbosstoken")
+        }
+    }
+    
 
 }
 
