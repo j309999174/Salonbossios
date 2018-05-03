@@ -55,7 +55,7 @@ class ViewController: UIViewController, WKUIDelegate, WKScriptMessageHandler{
         if(message.name == "salonbosstoken"){
             print("调用salonbosstoken")
             //储存deviceToken
-            if UserDefaults.standard.string(forKey: "deviceToken") != nil {
+            
             let urlmessage:String!="https://www.oushelun.cn/decorateajax/salonbosstoken/123/\(UserDefaults.standard.string(forKey: "deviceToken")!)"
             let toSearchword = CFURLCreateStringByAddingPercentEscapes(nil, urlmessage! as CFString, nil, "!*'();@&=+$,?%#[]" as CFString, CFStringBuiltInEncodings.UTF8.rawValue)
             print(toSearchword!)
@@ -73,7 +73,7 @@ class ViewController: UIViewController, WKUIDelegate, WKScriptMessageHandler{
                                                 }})
             //使用resume方法启动任务
             dataTask.resume()
-            }
+            
             print("完成salonbosstoken")
         }
     }
